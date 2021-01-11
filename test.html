@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="myfile">
+    <img src="" alt="" id="myimg">
+    <script>
+        var myfile = document.querySelector("#myfile");
+        var myimg = document.querySelector("#myimg");
+        myfile.onchange = function () {
+            //拿到用户上传的第一张图片
+            var file = myfile.files[0]
+            console.log(file);
+            //将拿到文件的路径给图片的路径
+            var imgUrl = URL.createObjectURL(file);
+            console.log(imgUrl);//blob:null/9e435a3a-5293-4df0-aff8-2c9253e0a7cf
+            myimg.src = imgUrl;
+
+
+        }
+    </script>
+</body>
+
+</html>
