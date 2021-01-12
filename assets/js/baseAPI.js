@@ -10,4 +10,16 @@ $.ajaxPrefilter(function (options) {
             Authorization: localStorage.getItem("token")
         }
     }
+    //全局统一挂载complete回调函数
+    options.complete = function (res) {
+        // console.log('执行了complete回调函数');
+        // console.log(res);
+        // 在complete回调函数中  可以使用res.responseJSON拿到服务器响应回来的数据
+        if (res.responseJSON.status === 1 && res.responseJSON.message === "身份认证失败！") {
+            //强制清空token
+            localStorage.removeItem("token");
+            //强制跳转登录页面
+            location.href = "/login.html"
+        }
+    }
 })

@@ -36,7 +36,7 @@ $(function () {
             password: $('#form_reg [name=password]').val()
         }
         $.post("/api/reguser", data, function (res) {
-            console.log(res);//message: "身份认证失败！"   status: 1
+            // console.log(res);//message: "身份认证失败！"   status: 1
             if (res.status !== 0) {
                 layer.msg(res.message)
             } else {
